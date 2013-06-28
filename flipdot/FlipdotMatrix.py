@@ -3,8 +3,7 @@ import tools
 
 class FlipdotMatrix():
 
-    def __init__(
-                 self, 
+    def __init__(self, 
                  udpHostAndPort = ("2001:7f0:3003:cafe:222:f9ff:fe01:c65",2323), 
                  imageSize=(40, 16)
                  ):
