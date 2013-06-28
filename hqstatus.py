@@ -38,7 +38,7 @@ class HqStatusFlipdotAdapter(object):
             r1 = conn.getresponse()
             if (r1.status == 200):
                 return r1.read()
-            else
+            else:
                 return "hq unknown"
         except:
             return "hq fnord"
