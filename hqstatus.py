@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import httplib, time
-from flipdot import tools, FlipdotMatrix
+from flipdot import FlipdotMatrix
 
 class HqStatusFlipdotAdapter(object):
     def __init__(self, 
@@ -20,8 +20,7 @@ class HqStatusFlipdotAdapter(object):
         self.showStatusText(hqstatus)   
         
     def showStatusText(self, hqstatus):
-        statusImageArray = tools.generateImageArrayFromText(hqstatus, (2,1) , self.__flipdotMatrix.imageSize);
-        self.__flipdotMatrix.show(statusImageArray)
+        self.__flipdotMatrix.showText(hqstatus)
         
     def run(self):
         while True:
