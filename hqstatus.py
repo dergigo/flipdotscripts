@@ -13,7 +13,7 @@ class HqStatusFlipdotAdapter(object):
 
     def runOnce(self):
         hqstatus = self.getHqStatusFromUberbus()
-        self.showStatusText(hqstatus)
+        self.showStatusTextWithoutBeginningHq(hqstatus)
         
     def showStatusTextWithoutBeginningHq(self, hqstatus):
         hqstatus = hqstatus[3:]
@@ -32,12 +32,15 @@ class HqStatusFlipdotAdapter(object):
             time.sleep(5.0)
         
     def getHqStatusFromUberbus(self):
-        conn = httplib.HTTPConnection(self.__uberbusHostAndPort[0]+":"+str(self.__uberbusHostAndPort[1]))
-        conn.request("GET", "/")
-        r1 = conn.getresponse()
-        if (r1.status == 200):
-            return r1.read()
-        else:
+        try:
+            conn = httplib.HTTPConnection(self.__uberbusHostAndPort[0]+":"+str(self.__uberbusHostAndPort[1]))
+            conn.request("GET", "/")
+            r1 = conn.getresponse()
+            if (r1.status == 200):
+                return r1.read()
+            else:
+                return "hq unknown"
+        except:
             return "hq fnord"
 
 #main
