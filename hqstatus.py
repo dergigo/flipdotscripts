@@ -13,7 +13,7 @@ class HqStatusFlipdotAdapter(object):
 
     def runOnce(self):
         hqstatus = self.getHqStatusFromUberbus()
-        self.showStatusText(hqstatus)
+        self.showStatusTextWithoutBeginningHq(hqstatus)
         
     def showStatusTextWithoutBeginningHq(self, hqstatus):
         hqstatus = hqstatus[3:]
