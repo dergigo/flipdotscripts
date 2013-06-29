@@ -96,7 +96,7 @@ if (__name__=="__main__"):
     #matrix = FlipdotMatrix(("::1",2323))
     matrix = FlipdotMatrix()
     #matrix.resetAll()
-    matrix.showText("fnord", (0,0))
+    matrix.showText("fnord!", (0,0))
     
     
     
