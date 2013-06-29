@@ -48,22 +48,18 @@ class FlipdotMatrix():
         return newImageArray2d
 
     def showBlit (self, imageArray2d, position = (0,0)):
-        imageArray=[]
-        size = (len(imageArray2d[0]), len(imageArray2d))
-        
+        imageArray2d = self.addImageArray2dToImageArray(self.oldImageArray2d, imageArray2d, position)
+        self.__showImageArray2d(imageArray2d)
+    
+    def __showImageArray2d(self, newImageArray2d):
+        imageArray = []
         for y in range(self.imageSize[1]):
             for x in range(self.imageSize[0]):
-                if (x-position[0]<0 or y-position[1]<0):
-                    imageArray.append(self.oldImageArray2d[y][x])
-                elif (x-position[0]>=size[0] or y-position[1]>=size[1]):
-                    imageArray.append(self.oldImageArray2d[y][x])
-                else:
-                    coord = (x-position[0], y-position[1])
-                    imageArray.append(imageArray2d[coord[1]][coord[0]])
-        
-        return self.show(imageArray)
+                imageArray.append(newImageArray2d[y][x])
+        self.oldImageArray2d = newImageArray2d
+        self.show(imageArray)
     
-    def showText(self, text, position):
+    def showText(self, text, position=(0,0)):
         imageArray2d = self.oldImageArray2d
         imageArray2d = self.addTextToImageArray2d(imageArray2d, text, (0,0))
         self.showBlit(imageArray2d)
@@ -93,10 +89,8 @@ class FlipdotMatrix():
 
 #main
 if (__name__=="__main__"):
-    #matrix = FlipdotMatrix(("::1",2323))
     matrix = FlipdotMatrix()
-    #matrix.resetAll()
-    matrix.showText("fnord!", (0,0))
+    matrix.resetAll()
     
     
     
