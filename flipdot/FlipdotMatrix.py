@@ -59,9 +59,17 @@ class FlipdotMatrix():
         self.oldImageArray2d = newImageArray2d
         self.show(imageArray)
     
+    def clear(self):
+        self.show(tools.generateAllOffImageArray(self.imageSize))
+        self.oldImageArray2d = self.generateEmptyImageArray2d()
+
+    def clearAndShowText(self, text, position=(0,0)):
+        self.clear()
+        self.showText(text, position)
+
     def showText(self, text, position=(0,0)):
         imageArray2d = self.oldImageArray2d
-        imageArray2d = self.addTextToImageArray2d(imageArray2d, text, (0,0))
+        imageArray2d = self.addTextToImageArray2d(imageArray2d, text, position)
         self.showBlit(imageArray2d)
         
     def addTextToImageArray2d(self, imageArray2d, text, position):
