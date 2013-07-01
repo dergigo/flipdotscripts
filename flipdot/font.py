@@ -2,6 +2,8 @@
 
 
 font8px={
+    "lineheight":8,
+    "whitespace":1,
     "A": [
     [0,0,0,0,0],
     [0,1,1,0,0],
